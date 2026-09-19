@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pauline & Thibault — 5 juin 2027</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Caveat:wght@400;600;700&display=swap');
+
+    :root {
+      --blue: #0639c7;
+      --cream: #fff1d5;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--blue);
+      font-family: "Gaegu", cursive;
+    }
+
+    nav {
+      padding: 22px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    nav a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .hero {
+      min-height: 90vh;
+      max-width: 1050px;
+      margin: auto;
+      padding: 60px 25px 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-size: clamp(70px, 12vw, 145px);
+      line-height: .75;
+      margin: 20px 0 60px;
+      letter-spacing: -4px;
+    }
+
+    h2 {
+      font-size: clamp(48px, 7vw, 80px);
+      margin: 0 0 40px;
+      text-decoration: underline;
+      text-decoration-thickness: 4px;
+      text-underline-offset: 10px;
+    }
+
+    .date {
+      font-size: clamp(34px, 6vw, 65px);
+      font-weight: 700;
+      margin-top: 35px;
+      line-height: .95;
+    }
+
+    .place {
+      font-size: 27px;
+      font-weight: 700;
+    }
+
+    .photo-strip {
+      width: min(320px, 75vw);
+      margin: auto;
+      transform: rotate(-2deg);
+    }
+
+    .photo-strip img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%);
+    }
+
+    .doodle {
+      font-family: "Caveat", cursive;
+      font-size: 29px;
+      transform: rotate(-7deg);
+      margin: 35px;
+    }
+
+    .heart {
+      font-size: 45px;
+    }
+
+    .countdown {
+      margin: 60px auto 0;
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+    }
+
+    .countdown strong {
+      display: block;
+      font-size: 45px;
+    }
+
+    .countdown span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 100px 30px;
+    }
+
+    .program-line {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      font-size: 27px;
+      margin: 18px 0;
+      text-align: left;
+    }
+
+    .program-line strong {
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 26px;
+      line-height: 1.25;
+    }
+
+    .big-icon {
+      font-size: 65px;
+      margin: 25px 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .card {
+      border: 3px solid var(--blue);
+      border-radius: 20px;
+      padding: 30px;
+    }
+
+    .card h3 {
+      font-size: 32px;
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      font-size: 22px;
+      margin-bottom: 0;
+    }
+
+    .rsvp {
+      text-align: center;
+      padding-bottom: 140px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--cream);
+      padding: 20px 55px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 31px;
+      font-weight: 700;
+      transform: rotate(-1deg);
+      transition: transform .2s;
+    }
+
+    .button:hover {
+      transform: rotate(1deg) scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      font-family: "Caveat", cursive;
+      font-size: 27px;
+      padding: 40px;
+    }
+
+    @media (max-width: 650px) {
+
+      nav {
+        gap: 15px;
+        font-size: 15px;
+      }
+
+      .hero {
+        padding-top: 30px;
+      }
+
+      h1 {
+        margin-bottom: 45px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 70px 25px;
+      }
+
+      .program-line {
+        grid-template-columns: 80px 1fr;
+        font-size: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#programme">LE PROGRAMME</a>
+  <a href="#venir">VENIR</a>
+  <a href="#dormir">DORMIR</a>
+  <a href="#lendemain">LE LENDEMAIN</a>
+  <a href="#infos">INFOS</a>
+  <a href="#rsvp">RSVP ♡</a>
+</nav>
+
+
+<header class="hero">
+
+  <h1>PAULINE<br>& THIBAULT</h1>
+
+  <div class="doodle">
+    même équipe<br>
+    depuis toujours ♡
+  </div>
+
+  <!-- ON METTRA VOS PHOTOS ICI -->
+
+  <div class="heart">♡</div>
+
+  <div class="date">
+    ON SE MARIE !<br><br>
+    5 JUIN 2027
+  </div>
+
+  <div class="place">
+    MONTGAUDRY · 61360
+  </div>
+
+  <div class="countdown">
+    <div>
+      <strong id="days">---</strong>
+      <span>JOURS</span>
+    </div>
+
+    <div>
+      <strong id="hours">--</strong>
+      <span>HEURES</span>
+    </div>
+
+    <div>
+      <strong id="minutes">--</strong>
+      <span>MINUTES</span>
+    </div>
+
+    <div>
+      <strong id="seconds">--</strong>
+      <span>SECONDES</span>
+    </div>
+  </div>
+
+</header>
+
+
+<section id="programme">
+
+  <h2>LE PROGRAMME</h2>
+
+  <div class="program-line">
+    <strong>16H00</strong>
+    <span>CÉRÉMONIE LAÏQUE</span>
+  </div>
+
+  <div class="program-line">
+    <strong>17H00</strong>
+    <span>COCKTAIL</span>
+  </div>
+
+  <div class="program-line">
+    <strong>20H00</strong>
+    <span>DÎNER</span>
+  </div>
+
+  <div class="program-line">
+    <strong>22H30</strong>
+    <span>SOIRÉE (ET ON ESPÈRE TARD...)</span>
+  </div>
+
+  <div class="doodle">
+    Rires, émotions<br>
+    et boule à facettes ♡
+  </div>
+
+</section>
+
+
+<section id="venir">
+
+  <h2>VENIR</h2>
+
+  <div class="big-icon">→</div>
+
+  <p>
+    Le mariage aura lieu au <strong>Val Gaudry</strong>,
+    à Montgaudry (61360), dans le Perche.
+  </p>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>🚗 EN VOITURE</h3>
+      <p>Environ 2h depuis Paris.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚂 EN TRAIN</h3>
+      <p>
+        Gare de Nogent-le-Rotrou,
+        puis environ 15 minutes en voiture.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="dormir">
+
+  <h2>DORMIR</h2>
+
+  <div class="big-icon">☾</div>
+
+  <p>
+    <strong>28 couchages</strong> sont disponibles directement
+    sur place dans 9 chambres.
+  </p>
+
+  <p>
+    D'autres hébergements, gîtes et hôtels sont disponibles
+    autour de Montgaudry.
+  </p>
+
+  <p class="doodle">
+    On vous prépare très bientôt<br>
+    la liste complète ♡
+  </p>
+
+</section>
+
+
+<section id="lendemain">
+
+  <h2>LE LENDEMAIN</h2>
+
+  <div class="big-icon">☕</div>
+
+  <p>
+    Parce que les bonnes choses continuent le lendemain…
+  </p>
+
+  <p>
+    On se retrouve le <strong>dimanche 6 juin</strong>
+    pour un brunch décontracté et prolonger un peu la fête.
+  </p>
+
+</section>
+
+
+<section id="infos">
+
+  <h2>INFOS UTILES</h2>
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>👕 DRESS CODE</h3>
+      <p>Comme vous êtes à l'aise !</p>
+    </div>
+
+    <div class="card">
+      <h3>♡ ENFANTS</h3>
+      <p>Les enfants sont les bienvenus.</p>
+    </div>
+
+    <div class="card">
+      <h3>🚗 PARKING</h3>
+      <p>Parking disponible sur place.</p>
+    </div>
+
+    <div class="card">
+      <h3>☎ CONTACT</h3>
+      <p>Une question ? Écrivez-nous !</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="rsvp" class="rsvp">
+
+  <h2>VOUS VENEZ ?</h2>
+
+  <p>
+    Dites-nous si vous serez de la partie ♡
+  </p>
+
+  <!-- On ajoutera le lien RSVP ensuite -->
+
+  <a class="button" href="#">
+    ON SERA LÀ ♡
+  </a>
+
+</section>
+
+
+<footer>
+  Pauline & Thibault · 05.06.2027 ♡
+</footer>
+
+
+<script>
+
+  const weddingDate = new Date("2027-06-05T16:00:00");
+
+  function updateCountdown() {
+
+    const now = new Date();
+    const difference = weddingDate - now;
+
+    if (difference <= 0) return;
+
+    const days =
+      Math.floor(difference / (1000 * 60 * 60 * 24));
+
+    const hours =
+      Math.floor((difference / (1000 * 60 * 60)) % 24);
+
+    const minutes =
+      Math.floor((difference / (1000 * 60)) % 60);
+
+    const seconds =
+      Math.floor((difference / 1000) % 60);
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
