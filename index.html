@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="theme-color" content="#fff0d3">
   <title>Pauline & Thibault — 5 juin 2027</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,99 +11,72 @@
   <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
 
   <style>
-
     :root {
       --blue: #063bc8;
       --cream: #fff0d3;
       --cream-light: #fff7e9;
+      --line: rgba(6, 59, 200, 0.18);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       background: var(--cream);
       color: var(--blue);
       font-family: "Patrick Hand", cursive;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: inherit;
-    }
+    img { max-width: 100%; }
+    a { color: inherit; }
+    [hidden] { display: none !important; }
 
-    img {
-      max-width: 100%;
-    }
-
-    /* =========================
-       NAV
-    ========================= */
-
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
-      z-index: 50;
-
+      z-index: 100;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-
-      gap: 12px 25px;
-
-      padding: 15px 20px;
-
-      background: rgba(255, 240, 211, 0.95);
-
+      gap: 10px 24px;
+      padding: 14px 20px;
+      background: rgba(255, 240, 211, 0.94);
       backdrop-filter: blur(8px);
-
-      border-bottom: 1px solid rgba(6, 59, 200, 0.12);
+      border-bottom: 1px solid var(--line);
     }
 
     nav a {
       text-decoration: none;
       font-size: 18px;
-      letter-spacing: 1px;
+      letter-spacing: .8px;
     }
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    nav a:hover { text-decoration: underline; }
 
-    /* =========================
-       GLOBAL
-    ========================= */
-
+    /* GLOBAL */
     section {
       max-width: 1050px;
-      margin: auto;
-      padding: 80px 30px;
+      margin: 0 auto;
+      padding: 84px 30px;
+      scroll-margin-top: 84px;
     }
 
     .section-heading {
       display: flex;
       align-items: center;
-      gap: 20px;
-
+      gap: 18px;
       margin-bottom: 40px;
     }
 
-    .section-heading.centered {
-      justify-content: center;
-    }
+    .section-heading.centered { justify-content: center; }
 
     h2 {
+      min-width: 0;
       margin: 0;
-
-      font-size: clamp(50px, 7vw, 80px);
-
-      line-height: 0.95;
-
+      font-size: clamp(48px, 7vw, 80px);
+      line-height: .95;
       text-decoration: underline;
       text-decoration-thickness: 4px;
       text-underline-offset: 10px;
@@ -116,96 +88,79 @@
     }
 
     .doodle-icon {
-      width: 90px;
-      height: 90px;
-
+      width: 88px;
+      height: 88px;
+      flex: 0 0 auto;
       object-fit: contain;
-
-      flex-shrink: 0;
     }
 
     .small-note {
       font-size: 18px;
-      opacity: 0.8;
+      opacity: .78;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
+    /* HERO */
     .hero {
       max-width: 1050px;
-      margin: auto;
-
-      padding: 50px 25px 70px;
-
+      margin: 0 auto;
+      padding: 48px 25px 72px;
       text-align: center;
     }
 
     .hero h1 {
-      margin: 10px 0 35px;
-
-      font-size: clamp(75px, 12vw, 145px);
-
-      line-height: 0.78;
-
-      letter-spacing: -2px;
+      margin: 10px 0 40px;
+      font-size: clamp(74px, 11vw, 138px);
+      line-height: .84;
+      letter-spacing: -1px;
     }
 
+    /* Auto-height collage: no fixed container height, so photos can never cover the date */
     .photo-totem {
-      position: relative;
-
-      width: 350px;
-      height: 660px;
-
-      margin: 15px auto 20px;
+      width: min(365px, 86vw);
+      margin: 0 auto 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .photo-totem img {
-      position: absolute;
-
-      width: 250px;
-
+      position: relative;
+      display: block;
+      width: 255px;
+      max-width: 78vw;
+      height: auto;
       filter: grayscale(100%);
-
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      box-shadow: 0 5px 14px rgba(0,0,0,.08);
     }
 
     .photo1 {
-      top: 0;
-      left: 18px;
-
-      transform: rotate(-2deg);
       z-index: 1;
+      margin-right: 46px;
+      transform: rotate(-2deg);
     }
 
     .photo2 {
-      top: 195px;
-      right: 5px;
-
-      transform: rotate(1.5deg);
       z-index: 2;
+      margin-top: -78px;
+      margin-left: 62px;
+      transform: rotate(1.4deg);
     }
 
     .photo3 {
-      top: 390px;
-      left: 25px;
-
-      transform: rotate(-1deg);
       z-index: 3;
+      margin-top: -76px;
+      margin-right: 28px;
+      transform: rotate(-1deg);
     }
 
     .hero-main-date {
-      margin-top: 15px;
-
+      margin-top: 12px;
       font-size: clamp(48px, 7vw, 72px);
-
-      line-height: 0.95;
+      line-height: .95;
     }
 
     .hero-place {
       margin-top: 6px;
-
       font-size: clamp(24px, 3vw, 34px);
     }
 
@@ -213,1399 +168,639 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-
-      gap: 32px;
-
+      gap: 28px 34px;
       margin-top: 45px;
     }
 
-    .countdown div {
-      min-width: 75px;
-    }
-
+    .countdown > div { min-width: 78px; }
     .countdown strong {
       display: block;
-
       font-size: 43px;
-
       line-height: 1;
     }
-
     .countdown span {
       display: block;
-
       margin-top: 7px;
-
       font-size: 16px;
-
       letter-spacing: 1px;
     }
 
-    /* =========================
-       PROGRAMME
-    ========================= */
-
+    /* PROGRAMME */
     .programme-list {
       display: grid;
-      gap: 12px;
-
-      max-width: 700px;
+      gap: 16px;
+      max-width: 760px;
     }
 
     .programme-row {
       display: grid;
-
-      grid-template-columns: 80px 100px 1fr;
-
+      grid-template-columns: 86px 100px minmax(0, 1fr);
       align-items: center;
-
       gap: 18px;
-
-      min-height: 90px;
+      min-height: 96px;
     }
 
     .programme-row img {
-      width: 78px;
-      height: 78px;
-
+      width: 80px;
+      height: 80px;
       object-fit: contain;
     }
 
-    .programme-time {
-      font-size: 26px;
-    }
+    .programme-time { font-size: 27px; }
+    .programme-label { font-size: 30px; line-height: 1.05; }
 
-    .programme-label {
-      font-size: 29px;
-    }
-
-    /* =========================
-       VENIR
-    ========================= */
-
-    .val-gaudry-image {
+    /* VENIR */
+    .venue-drawing {
       display: block;
-
-      width: min(720px, 100%);
-
-      margin: 10px auto 35px;
-
-      mix-blend-mode: multiply;
+      width: min(690px, 100%);
+      margin: 0 auto 34px;
+      object-fit: contain;
     }
 
     .venue-intro {
+      max-width: 760px;
+      margin: 0 auto;
       text-align: center;
-
-      max-width: 750px;
-
-      margin: auto;
     }
 
     .address-link {
       display: inline-block;
-
-      margin-top: 6px;
-
+      margin-top: 5px;
       font-size: 25px;
-
       text-decoration-thickness: 2px;
       text-underline-offset: 5px;
     }
 
     .travel-grid {
       display: grid;
-
-      grid-template-columns: 1fr 1fr;
-
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 24px;
-
-      margin-top: 45px;
+      margin-top: 44px;
     }
 
     .travel-card {
-      border: 3px solid var(--blue);
-
-      border-radius: 20px;
-
+      min-width: 0;
       padding: 28px;
-
+      border: 3px solid var(--blue);
+      border-radius: 22px;
       text-align: center;
     }
 
     .travel-card img {
-      width: 125px;
-      height: 100px;
-
-      object-fit: contain;
-
+      width: 126px;
+      height: 108px;
       margin-bottom: 10px;
+      object-fit: contain;
     }
 
     .travel-card h3 {
       margin: 0 0 10px;
-
       font-size: 32px;
     }
 
     .travel-card p {
       margin: 0;
-
       font-size: 23px;
     }
 
-    /* =========================
-       DORMIR
-    ========================= */
-
+    /* DORMIR */
     .sleep-intro {
       max-width: 800px;
-
       margin-bottom: 45px;
     }
 
-    .lodging-group {
-      margin: 55px 0;
-    }
-
+    .lodging-group { margin: 55px 0; }
     .lodging-group-title {
+      margin: 0 0 22px;
       font-size: 38px;
-
-      margin: 0 0 20px;
     }
 
     .lodging-grid {
       display: grid;
-
-      grid-template-columns: repeat(2, 1fr);
-
+      grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 18px;
     }
 
     .lodging-card {
-      border: 2px solid var(--blue);
-
-      border-radius: 18px;
-
+      min-width: 0;
       padding: 22px;
+      border: 2px solid var(--blue);
+      border-radius: 18px;
     }
 
     .lodging-card h4 {
       margin: 0 0 10px;
-
       font-size: 27px;
+      line-height: 1.08;
     }
 
     .lodging-meta {
       display: flex;
       flex-wrap: wrap;
-
       gap: 6px 16px;
-
       margin-bottom: 10px;
-
       font-size: 19px;
     }
 
     .lodging-details {
       margin-top: 7px;
-
       font-size: 18px;
-
       line-height: 1.3;
     }
 
     .lodging-link {
       display: inline-block;
-
       margin-top: 14px;
-
       font-size: 18px;
-
-      font-weight: bold;
-
+      font-weight: 700;
       text-decoration: none;
-
       border-bottom: 2px solid var(--blue);
     }
 
-    .lodging-link:hover {
-      transform: translateX(3px);
+    .lodging-link:hover { transform: translateX(3px); }
+
+    /* LENDEMAIN — a single brunch icon lives only in the section heading */
+    .brunch-content {
+      max-width: 800px;
     }
 
-<!-- =========================
-     LENDEMAIN
-========================= -->
+    .brunch-content p:first-child { margin-top: 0; }
 
-<section id="lendemain">
+    /* INFOS — stacked vertically, no boxed cards */
+    .info-list {
+      display: flex;
+      flex-direction: column;
+      max-width: 820px;
+    }
 
-  <div class="section-heading">
-
-    <img
-      src="brunch.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>LE LENDEMAIN</h2>
-
-  </div>
-
-
-  <div class="brunch-content">
-
-    <p>
-      Parce que les bonnes choses
-      continuent le lendemain…
-    </p>
-
-    <p>
-      On se retrouve le
-      <strong>dimanche 6 juin</strong>
-      pour un brunch décontracté
-      et prolonger encore un peu la fête.
-    </p>
-
-  </div>
-
-</section>
-
-    /* =========================
-       INFOS
-    ========================= */
-
-    .info-grid {
+    .info-item {
       display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 20px;
+      grid-template-columns: 105px minmax(0, 1fr);
+      gap: 28px;
+      align-items: center;
+      padding: 26px 0;
+      border-bottom: 2px solid var(--line);
     }
 
-    .practical-card {
-      border: 3px solid var(--blue);
+    .info-item:last-child { border-bottom: 0; }
 
-      border-radius: 20px;
-
-      padding: 25px;
-
-      text-align: center;
-    }
-
-    .practical-card img {
-      width: 110px;
-      height: 100px;
-
+    .info-item img {
+      width: 92px;
+      height: 92px;
       object-fit: contain;
-
-      margin-bottom: 10px;
     }
 
-    .practical-card h3 {
-      margin: 0 0 10px;
-
-      font-size: 29px;
+    .info-item h3 {
+      margin: 0 0 5px;
+      font-size: 31px;
     }
 
-    .practical-card p {
+    .info-item p {
       margin: 0;
-
-      font-size: 21px;
+      font-size: 22px;
     }
 
-    /* =========================
-       RSVP
-    ========================= */
-
-    .rsvp {
-      text-align: center;
-    }
+    /* RSVP */
+    .rsvp { text-align: center; }
 
     .rsvp-heading-icon {
-      width: 100px;
-      height: 100px;
-
+      width: 96px;
+      height: 96px;
       object-fit: contain;
+      flex: 0 0 auto;
     }
 
     .rsvp-intro {
       max-width: 650px;
-
       margin: 0 auto 35px;
     }
 
     .rsvp-form {
       max-width: 720px;
-
-      margin: auto;
-
+      margin: 0 auto;
       padding: 32px;
-
-      text-align: left;
-
       border: 3px solid var(--blue);
-
       border-radius: 28px;
+      text-align: left;
     }
 
-    .form-group {
-      margin-bottom: 27px;
-    }
-
-    label,
-    .form-title {
+    .form-group { margin-bottom: 27px; }
+    label, .form-title {
       display: block;
-
       margin-bottom: 10px;
-
       font-size: 24px;
     }
 
-    input[type="text"],
-    textarea {
+    input[type="text"], textarea {
       width: 100%;
-
       padding: 14px 16px;
-
       border: 2px solid var(--blue);
-
       border-radius: 14px;
-
       background: transparent;
-
       color: var(--blue);
-
       font-family: "Patrick Hand", cursive;
-
       font-size: 22px;
-
       outline: none;
     }
 
     textarea {
       min-height: 110px;
-
       resize: vertical;
     }
 
-    input::placeholder,
-    textarea::placeholder {
-      color: rgba(6,59,200,0.55);
+    input::placeholder, textarea::placeholder {
+      color: rgba(6,59,200,.55);
     }
 
     .choices {
       display: flex;
       flex-direction: column;
-
       gap: 10px;
     }
 
     .choice {
       display: flex;
-
       align-items: center;
-
       gap: 10px;
-
       font-size: 21px;
     }
 
     .choice input {
-      accent-color: var(--blue);
-
       width: 18px;
       height: 18px;
+      accent-color: var(--blue);
     }
 
     .guest-row {
       display: grid;
-
-      grid-template-columns: 1fr 48px;
-
+      grid-template-columns: minmax(0,1fr) 48px;
       gap: 10px;
-
       margin-bottom: 10px;
     }
 
-    .remove-guest,
-    .add-guest {
+    .remove-guest, .add-guest {
       border: 2px solid var(--blue);
-
       background: transparent;
-
       color: var(--blue);
-
       font-family: "Patrick Hand", cursive;
-
       cursor: pointer;
     }
 
     .remove-guest {
       border-radius: 12px;
-
       font-size: 28px;
     }
 
     .add-guest {
       margin-top: 5px;
-
       padding: 9px 15px;
-
       border-radius: 12px;
-
       font-size: 19px;
     }
 
     .submit-button {
       width: 100%;
-
       padding: 17px 25px;
-
       border: 0;
-
       border-radius: 999px;
-
       background: var(--blue);
-
       color: var(--cream);
-
       font-family: "Patrick Hand", cursive;
-
       font-size: 28px;
-
       cursor: pointer;
     }
 
     .form-status {
       margin-top: 18px;
-
       text-align: center;
-
       font-size: 21px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
-
     footer {
       padding: 35px 20px 60px;
-
       text-align: center;
-
       font-size: 27px;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
-
+    /* MOBILE */
     @media (max-width: 700px) {
-
-      nav {
-        gap: 9px 16px;
-      }
-
-      nav a {
-        font-size: 14px;
-      }
-
-      .hero {
-        padding-top: 30px;
-      }
-
-      .photo-totem {
-        width: 285px;
-        height: 570px;
-      }
-
-      .photo-totem img {
-        width: 215px;
-      }
-
-      .photo1 {
-        left: 10px;
-      }
-
-      .photo2 {
-        top: 170px;
-        right: 0;
-      }
-
-      .photo3 {
-        top: 340px;
-        left: 15px;
-      }
+      nav { gap: 8px 15px; }
+      nav a { font-size: 14px; }
 
       section {
-        padding: 65px 22px;
+        padding: 64px 20px;
+        scroll-margin-top: 110px;
       }
+
+      .hero { padding: 34px 18px 64px; }
+      .hero h1 {
+        margin-bottom: 32px;
+        font-size: clamp(62px, 19vw, 94px);
+      }
+
+      .photo-totem { width: min(300px, 92vw); }
+      .photo-totem img { width: 218px; }
+      .photo1 { margin-right: 34px; }
+      .photo2 { margin-top: -66px; margin-left: 46px; }
+      .photo3 { margin-top: -64px; margin-right: 20px; }
+
+      .countdown { gap: 20px; }
+      .countdown > div { min-width: 66px; }
+      .countdown strong { font-size: 36px; }
+      .countdown span { font-size: 14px; }
 
       .section-heading {
         gap: 12px;
+        align-items: center;
+      }
+      .section-heading .doodle-icon,
+      .rsvp-heading-icon {
+        width: 62px;
+        height: 62px;
       }
 
-      .section-heading .doodle-icon {
-        width: 65px;
-        height: 65px;
-      }
+      h2 { font-size: clamp(42px, 13vw, 62px); }
 
       .programme-row {
-        grid-template-columns: 65px 70px 1fr;
-
-        gap: 10px;
+        grid-template-columns: 58px 62px minmax(0,1fr);
+        gap: 9px;
+        min-height: 76px;
       }
+      .programme-row img { width: 55px; height: 55px; }
+      .programme-time { font-size: 20px; }
+      .programme-label { font-size: 22px; }
 
-      .programme-row img {
-        width: 60px;
-        height: 60px;
+      .travel-grid, .lodging-grid { grid-template-columns: 1fr; }
+
+      .info-item {
+        grid-template-columns: 76px minmax(0,1fr);
+        gap: 18px;
+        padding: 22px 0;
       }
+      .info-item img { width: 68px; height: 68px; }
+      .info-item h3 { font-size: 27px; }
+      .info-item p { font-size: 20px; }
 
-      .programme-time {
-        font-size: 21px;
-      }
-
-      .programme-label {
-        font-size: 23px;
-      }
-
-      .travel-grid,
-      .lodging-grid,
-      .info-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .brunch-content {
-        grid-template-columns: 1fr;
-
-        text-align: center;
-      }
-
-      .brunch-content img {
-        margin: auto;
-      }
-
-      .rsvp-form {
-        padding: 22px;
-      }
-
+      .rsvp-form { padding: 22px; }
     }
-
   </style>
 </head>
-
-
 <body>
 
+  <nav>
+    <a href="#programme">PROGRAMME</a>
+    <a href="#venir">VENIR</a>
+    <a href="#dormir">DORMIR</a>
+    <a href="#lendemain">LE LENDEMAIN</a>
+    <a href="#infos">INFOS</a>
+    <a href="#rsvp">RSVP ♡</a>
+  </nav>
 
-<!-- =========================
-     NAV
-========================= -->
+  <header class="hero">
+    <h1>PAULINE<br>&amp; THIBAULT</h1>
 
-<nav>
-
-  <a href="#programme">PROGRAMME</a>
-
-  <a href="#venir">VENIR</a>
-
-  <a href="#dormir">DORMIR</a>
-
-  <a href="#lendemain">LE LENDEMAIN</a>
-
-  <a href="#infos">INFOS</a>
-
-  <a href="#rsvp">RSVP ♡</a>
-
-</nav>
-
-
-
-<!-- =========================
-     HERO
-========================= -->
-
-<header class="hero">
-
-  <h1>
-    PAULINE<br>
-    & THIBAULT
-  </h1>
-
-
-  <div class="photo-totem">
-
-    <img
-      src="Photo-1.jpg"
-      class="photo1"
-      alt="Pauline et Thibault"
-    >
-
-    <img
-      src="Photo-2.jpg"
-      class="photo2"
-      alt="Pauline et Thibault"
-    >
-
-    <img
-      src="Photo-3.jpg"
-      class="photo3"
-      alt="Pauline et Thibault"
-    >
-
-  </div>
-
-
-  <div class="hero-main-date">
-    5 JUIN 2027
-  </div>
-
-  <div class="hero-place">
-    MONTGAUDRY 61360
-  </div>
-
-
-  <div class="countdown">
-
-    <div>
-      <strong id="days">---</strong>
-      <span>JOURS</span>
+    <div class="photo-totem" aria-label="Photos de Pauline et Thibault">
+      <img src="Photo-1.jpg" class="photo1" alt="Pauline et Thibault">
+      <img src="Photo-2.jpg" class="photo2" alt="Pauline et Thibault">
+      <img src="Photo-3.jpg" class="photo3" alt="Pauline et Thibault">
     </div>
 
-    <div>
-      <strong id="hours">--</strong>
-      <span>HEURES</span>
+    <div class="hero-main-date">5 JUIN 2027</div>
+    <div class="hero-place">MONTGAUDRY 61360</div>
+
+    <div class="countdown" aria-label="Compte à rebours avant le mariage">
+      <div><strong id="days">---</strong><span>JOURS</span></div>
+      <div><strong id="hours">--</strong><span>HEURES</span></div>
+      <div><strong id="minutes">--</strong><span>MINUTES</span></div>
+      <div><strong id="seconds">--</strong><span>SECONDES</span></div>
+    </div>
+  </header>
+
+  <section id="programme">
+    <div class="section-heading">
+      <img src="disco.png" class="doodle-icon" alt="">
+      <h2>LE PROGRAMME</h2>
     </div>
 
-    <div>
-      <strong id="minutes">--</strong>
-      <span>MINUTES</span>
-    </div>
-
-    <div>
-      <strong id="seconds">--</strong>
-      <span>SECONDES</span>
-    </div>
-
-  </div>
-
-</header>
-
-
-
-<!-- =========================
-     PROGRAMME
-========================= -->
-
-<section id="programme">
-
-  <div class="section-heading">
-
-    <img
-      src="disco.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>LE PROGRAMME</h2>
-
-  </div>
-
-
-  <div class="programme-list">
-
-
-    <div class="programme-row">
-
-      <img
-        src="ceremonie.png"
-        alt=""
-      >
-
-      <span class="programme-time">
-        16H00
-      </span>
-
-      <span class="programme-label">
-        CÉRÉMONIE LAÏQUE
-      </span>
-
-    </div>
-
-
-    <div class="programme-row">
-
-      <img
-        src="cocktail.png"
-        alt=""
-      >
-
-      <span class="programme-time">
-        17H00
-      </span>
-
-      <span class="programme-label">
-        COCKTAIL
-      </span>
-
-    </div>
-
-
-    <div class="programme-row">
-
-      <img
-        src="diner.png"
-        alt=""
-      >
-
-      <span class="programme-time">
-        20H00
-      </span>
-
-      <span class="programme-label">
-        DÎNER
-      </span>
-
-    </div>
-
-
-    <div class="programme-row">
-
-      <img
-        src="soiree.png"
-        alt=""
-      >
-
-      <span class="programme-time">
-        22H30
-      </span>
-
-      <span class="programme-label">
-        SOIRÉE
-        <br>
-        (ET ON ESPÈRE TARD...)
-      </span>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     VENIR
-========================= -->
-
-<section id="venir">
-
-  <div class="section-heading">
-
-    <img
-      src="details.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>VENIR</h2>
-
-  </div>
-
-
-  <img
-    src="val gaudry.png"
-    class="val-gaudry-image"
-    alt="Illustration du Val Gaudry"
-  >
-
-
-  <div class="venue-intro">
-
-    <p>
-      Rendez-vous au
-      <strong>Val Gaudry</strong>,
-      dans le Perche.
-    </p>
-
-
-    <p>
-
-      <strong>Adresse :</strong>
-
-      <br>
-
-      <a
-        class="address-link"
-        href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47e23f9adc6651a3:0xe830ae3c86aa0fb6?sa=X&ved=1t:8290&ictx=111"
-        target="_blank"
-        rel="noopener"
-      >
-        Le Tertre, 61360 Montgaudry →
-      </a>
-
-    </p>
-
-  </div>
-
-
-  <div class="travel-grid">
-
-
-    <div class="travel-card">
-
-      <img
-        src="voiture.png"
-        alt=""
-      >
-
-      <h3>
-        EN VOITURE
-      </h3>
-
-      <p>
-        Environ
-        <strong>2h30 depuis Paris</strong>.
-      </p>
-
-    </div>
-
-
-    <div class="travel-card">
-
-      <img
-        src="train.png"
-        alt=""
-      >
-
-      <h3>
-        EN TRAIN
-      </h3>
-
-      <p>
-        Gare d'<strong>Alençon</strong>,
-        puis environ
-        <strong>30 min en voiture</strong>.
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     DORMIR
-========================= -->
-
-<section id="dormir">
-
-  <div class="section-heading">
-
-    <img
-      src="dormir.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>DORMIR</h2>
-
-  </div>
-
-
-  <div class="sleep-intro">
-
-    <p>
-      Quelques adresses autour du Val Gaudry
-      pour poser vos valises après la fête.
-    </p>
-
-    <p class="small-note">
-      Prix et informations indiqués à titre indicatif
-      d'après la liste d'hébergements du domaine.
-      Pensez à vérifier les disponibilités et tarifs
-      directement auprès de chaque hébergement.
-    </p>
-
-  </div>
-
-
-  <div id="lodgings"></div>
-
-</section>
-
-
-
-<!-- =========================
-     LENDEMAIN
-========================= -->
-
-<section id="lendemain">
-
-  <div class="section-heading">
-
-    <img
-      src="brunch.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>LE LENDEMAIN</h2>
-
-  </div>
-
-
-  <div class="brunch-content">
-
-    <img
-      src="brunch.png"
-      alt=""
-    >
-
-    <div>
-
-      <p>
-        Parce que les bonnes choses
-        continuent le lendemain…
-      </p>
-
-      <p>
-        On se retrouve le
-        <strong>dimanche 6 juin</strong>
-        pour un brunch décontracté
-        et prolonger encore un peu la fête.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     INFOS
-========================= -->
-
-<section id="infos">
-
-  <div class="section-heading">
-
-    <img
-      src="infos.png"
-      class="doodle-icon"
-      alt=""
-    >
-
-    <h2>INFOS UTILES</h2>
-
-  </div>
-
-
-  <div class="info-grid">
-
-
-    <div class="practical-card">
-
-      <img
-        src="details.png"
-        alt=""
-      >
-
-      <h3>
-        DRESS CODE
-      </h3>
-
-      <p>
-        Venez beaux,
-        venez vous-mêmes.
-        Et surtout :
-        prêts à danser.
-      </p>
-
-    </div>
-
-
-    <div class="practical-card">
-
-      <img
-        src="no-kids.png"
-        alt=""
-      >
-
-      <h3>
-        LES PETITS HUMAINS
-      </h3>
-
-      <p>
-        On les adore,
-        mais cette fois-ci,
-        on vous veut rien que pour nous.
-        <br><br>
-        <strong>
-          Soirée réservée aux grands ♡
-        </strong>
-      </p>
-
-    </div>
-
-
-    <div class="practical-card">
-
-      <img
-        src="voiture.png"
-        alt=""
-      >
-
-      <h3>
-        PARKING
-      </h3>
-
-      <p>
-        Vous pourrez vous garer
-        directement sur place.
-      </p>
-
-    </div>
-
-
-  </div>
-
-</section>
-
-
-
-<!-- =========================
-     RSVP
-========================= -->
-
-<section
-  id="rsvp"
-  class="rsvp"
->
-
-  <div class="section-heading centered">
-
-    <img
-      src="rsvp.png"
-      class="rsvp-heading-icon"
-      alt=""
-    >
-
-    <h2>
-      VOUS SEREZ LÀ ?
-    </h2>
-
-  </div>
-
-
-  <p class="rsvp-intro">
-    Dites-nous précisément
-    qui sera de la partie ♡
-  </p>
-
-
-  <form
-    class="rsvp-form"
-    id="rsvpForm"
-  >
-
-
-    <div class="form-group">
-
-      <label for="respondent">
-        Votre prénom et votre nom
-      </label>
-
-      <input
-        type="text"
-        id="respondent"
-        required
-        placeholder="Prénom Nom"
-      >
-
-    </div>
-
-
-
-    <div class="form-group">
-
-      <span class="form-title">
-        Serez-vous parmi nous le 5 juin ?
-      </span>
-
-
-      <div class="choices">
-
-
-        <label class="choice">
-
-          <input
-            type="radio"
-            name="attendance"
-            value="oui"
-            required
-          >
-
-          Évidemment que oui !
-
-        </label>
-
-
-        <label class="choice">
-
-          <input
-            type="radio"
-            name="attendance"
-            value="non"
-            required
-          >
-
-          Malheureusement,
-          je ne pourrai pas venir
-
-        </label>
-
-
+    <div class="programme-list">
+      <div class="programme-row">
+        <img src="ceremonie.png" alt="">
+        <span class="programme-time">16H00</span>
+        <span class="programme-label">CÉRÉMONIE LAÏQUE</span>
       </div>
 
-    </div>
-
-
-
-    <div id="attendanceDetails">
-
-
-      <div class="form-group">
-
-        <span class="form-title">
-          Qui sera présent avec vous ?
-        </span>
-
-        <p class="small-note">
-          Ajoutez le prénom et le nom
-          de chaque personne présente.
-        </p>
-
-
-        <div id="guestsList"></div>
-
-
-        <button
-          type="button"
-          class="add-guest"
-          id="addGuest"
-        >
-          + AJOUTER UNE PERSONNE
-        </button>
-
+      <div class="programme-row">
+        <img src="cocktail.png" alt="">
+        <span class="programme-time">17H00</span>
+        <span class="programme-label">COCKTAIL</span>
       </div>
 
+      <div class="programme-row">
+        <img src="diner.png" alt="">
+        <span class="programme-time">20H00</span>
+        <span class="programme-label">DÎNER</span>
+      </div>
 
+      <div class="programme-row">
+        <img src="soiree.png" alt="">
+        <span class="programme-time">22H30</span>
+        <span class="programme-label">SOIRÉE<br>(ET ON ESPÈRE TARD...)</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="venir">
+    <div class="section-heading">
+      <img src="val-gaudry-icone.png" class="doodle-icon" alt="">
+      <h2>VENIR</h2>
+    </div>
+
+    <img src="val-gaudry-icone.png" class="venue-drawing" alt="Illustration du Val Gaudry">
+
+    <div class="venue-intro">
+      <p>Rendez-vous au <strong>Val Gaudry</strong>, dans le Perche.</p>
+      <p>
+        <strong>Adresse :</strong><br>
+        <a class="address-link"
+           href="https://www.google.com/maps/place//data=!4m2!3m1!1s0x47e23f9adc6651a3:0xe830ae3c86aa0fb6?sa=X&amp;ved=1t:8290&amp;ictx=111"
+           target="_blank" rel="noopener">
+          Le Tertre, 61360 Montgaudry →
+        </a>
+      </p>
+    </div>
+
+    <div class="travel-grid">
+      <div class="travel-card">
+        <img src="voiture.png" alt="">
+        <h3>EN VOITURE</h3>
+        <p>Environ <strong>2h30 depuis Paris</strong>.</p>
+      </div>
+
+      <div class="travel-card">
+        <img src="train.png" alt="">
+        <h3>EN TRAIN</h3>
+        <p>Gare d'<strong>Alençon</strong>, puis environ <strong>30 min en voiture</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dormir">
+    <div class="section-heading">
+      <img src="dormir.png" class="doodle-icon" alt="">
+      <h2>DORMIR</h2>
+    </div>
+
+    <div class="sleep-intro">
+      <p>Quelques adresses autour du Val Gaudry pour poser vos valises après la fête.</p>
+      <p class="small-note">Prix et informations indiqués à titre indicatif d'après la liste d'hébergements du domaine. Pensez à vérifier disponibilités et tarifs directement auprès de chaque hébergement.</p>
+    </div>
+
+    <div id="lodgings"></div>
+  </section>
+
+  <section id="lendemain">
+    <div class="section-heading">
+      <img src="brunch.png" class="doodle-icon" alt="">
+      <h2>LE LENDEMAIN</h2>
+    </div>
+
+    <div class="brunch-content">
+      <p>Parce que les bonnes choses continuent le lendemain…</p>
+      <p>On se retrouve le <strong>dimanche 6 juin</strong> pour un brunch décontracté et prolonger encore un peu la fête.</p>
+    </div>
+  </section>
+
+  <section id="infos">
+    <div class="section-heading">
+      <img src="infos.png" class="doodle-icon" alt="">
+      <h2>INFOS UTILES</h2>
+    </div>
+
+    <div class="info-list">
+      <div class="info-item">
+        <img src="details.png" alt="">
+        <div>
+          <h3>DRESS CODE</h3>
+          <p>Venez beaux, venez vous-mêmes. Et surtout : prêts à danser.</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <img src="no-kids.png" alt="">
+        <div>
+          <h3>LES PETITS HUMAINS</h3>
+          <p>On les adore, mais cette fois-ci, on vous veut rien que pour nous. <strong>Soirée réservée aux grands ♡</strong></p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <img src="voiture.png" alt="">
+        <div>
+          <h3>PARKING</h3>
+          <p>Vous pourrez vous garer directement sur place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rsvp" class="rsvp">
+    <div class="section-heading centered">
+      <img src="rsvp.png" class="rsvp-heading-icon" alt="">
+      <h2>VOUS SEREZ LÀ ?</h2>
+    </div>
+
+    <p class="rsvp-intro">Dites-nous précisément qui sera de la partie ♡</p>
+
+    <form class="rsvp-form" id="rsvpForm">
+      <div class="form-group">
+        <label for="respondent">Votre prénom et votre nom</label>
+        <input type="text" id="respondent" required placeholder="Prénom Nom">
+      </div>
 
       <div class="form-group">
-
-        <span class="form-title">
-          Et pour le brunch du dimanche ?
-        </span>
-
-
+        <span class="form-title">Serez-vous parmi nous le 5 juin ?</span>
         <div class="choices">
-
-
           <label class="choice">
-
-            <input
-              type="radio"
-              name="brunch"
-              value="oui"
-            >
-
-            Oui, on sera là
-
+            <input type="radio" name="attendance" value="oui" required>
+            Évidemment que oui !
           </label>
-
-
           <label class="choice">
-
-            <input
-              type="radio"
-              name="brunch"
-              value="non"
-            >
-
-            Non, on reprendra la route
-
+            <input type="radio" name="attendance" value="non" required>
+            Malheureusement, je ne pourrai pas venir
           </label>
+        </div>
+      </div>
 
-
+      <div id="attendanceDetails" hidden>
+        <div class="form-group">
+          <span class="form-title">Qui sera présent avec vous ?</span>
+          <p class="small-note">Ajoutez le prénom et le nom de chaque personne présente.</p>
+          <div id="guestsList"></div>
+          <button type="button" class="add-guest" id="addGuest">+ AJOUTER UNE PERSONNE</button>
         </div>
 
+        <div class="form-group">
+          <span class="form-title">Et pour le brunch du dimanche ?</span>
+          <div class="choices">
+            <label class="choice">
+              <input type="radio" name="brunch" value="oui">
+              Oui, on sera là
+            </label>
+            <label class="choice">
+              <input type="radio" name="brunch" value="non">
+              Non, on reprendra la route
+            </label>
+          </div>
+        </div>
       </div>
 
+      <div class="form-group">
+        <label for="message">Un petit mot pour nous ?</label>
+        <textarea id="message" placeholder="Promis, on lit tout ♡"></textarea>
+      </div>
 
-    </div>
+      <div class="form-group">
+        <label for="song">Une musique que vous voulez absolument entendre ?</label>
+        <input type="text" id="song" placeholder="Titre + artiste ♫">
+      </div>
 
+      <button type="submit" class="submit-button">ENVOYER ♡</button>
+      <div id="formStatus" class="form-status"></div>
+    </form>
+  </section>
 
+  <footer>Pauline &amp; Thibault · 05.06.2027 ♡</footer>
 
-    <div class="form-group">
+  <script>
+    const weddingDate = new Date("2027-06-05T16:00:00");
 
-      <label for="message">
-        Un petit mot pour nous ?
-      </label>
+    function updateCountdown() {
+      const now = new Date();
+      const difference = weddingDate - now;
 
-      <textarea
-        id="message"
-        placeholder="Promis, on lit tout ♡"
-      ></textarea>
+      if (difference <= 0) {
+        document.getElementById("days").textContent = "0";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+      }
 
-    </div>
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((difference / (1000 * 60)) % 60);
+      const seconds = Math.floor((difference / 1000) % 60);
 
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = String(hours).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    }
 
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-    <div class="form-group">
-
-      <label for="song">
-        Une musique que vous voulez
-        absolument entendre ?
-      </label>
-
-      <input
-        type="text"
-        id="song"
-        placeholder="Titre + artiste ♫"
-      >
-
-    </div>
-
-
-
-    <button
-      type="submit"
-      class="submit-button"
-    >
-      ENVOYER ♡
-    </button>
-
-
-    <div
-      id="formStatus"
-      class="form-status"
-    ></div>
-
-
-  </form>
-
-</section>
-
-
-
-<footer>
-  Pauline & Thibault · 05.06.2027 ♡
-</footer>
-
-
-
-<script>
-
-
-/* =========================
-   COMPTE À REBOURS
-========================= */
-
-
-const weddingDate =
-  new Date("2027-06-05T16:00:00");
-
-
-function updateCountdown() {
-
-  const now = new Date();
-
-  const difference =
-    weddingDate - now;
-
-
-  if (difference <= 0) {
-    return;
-  }
-
-
-  const days =
-    Math.floor(
-      difference /
-      (1000 * 60 * 60 * 24)
-    );
-
-
-  const hours =
-    Math.floor(
-      difference /
-      (1000 * 60 * 60) %
-      24
-    );
-
-
-  const minutes =
-    Math.floor(
-      difference /
-      (1000 * 60) %
-      60
-    );
-
-
-  const seconds =
-    Math.floor(
-      difference /
-      1000 %
-      60
-    );
-
-
-  document
-    .getElementById("days")
-    .textContent =
-    days;
-
-
-  document
-    .getElementById("hours")
-    .textContent =
-    String(hours).padStart(2, "0");
-
-
-  document
-    .getElementById("minutes")
-    .textContent =
-    String(minutes).padStart(2, "0");
-
-
-  document
-    .getElementById("seconds")
-    .textContent =
-    String(seconds).padStart(2, "0");
-
-}
-
-
-updateCountdown();
-
-setInterval(
-  updateCountdown,
-  1000
-);
-
-
-
-/* =========================
-   HÉBERGEMENTS
-========================= */
-
-
-const lodgingGroups = [
+    const lodgingGroups = [
 
 
   {
@@ -2439,525 +1634,135 @@ const lodgingGroups = [
 
 ];
 
+    function renderLodgings() {
+      const container = document.getElementById("lodgings");
 
+      lodgingGroups.forEach(group => {
+        const groupBlock = document.createElement("div");
+        groupBlock.className = "lodging-group";
 
-function renderLodgings() {
+        const title = document.createElement("h3");
+        title.className = "lodging-group-title";
+        title.textContent = group.title;
+        groupBlock.appendChild(title);
 
+        const grid = document.createElement("div");
+        grid.className = "lodging-grid";
 
-  const container =
-    document.getElementById(
-      "lodgings"
-    );
+        group.items.forEach(item => {
+          const card = document.createElement("article");
+          card.className = "lodging-card";
 
-
-  lodgingGroups.forEach(
-    group => {
-
-
-      const groupBlock =
-        document.createElement(
-          "div"
-        );
-
-
-      groupBlock.className =
-        "lodging-group";
-
-
-      const title =
-        document.createElement(
-          "h3"
-        );
-
-
-      title.className =
-        "lodging-group-title";
-
-
-      title.textContent =
-        group.title;
-
-
-      groupBlock.appendChild(
-        title
-      );
-
-
-      const grid =
-        document.createElement(
-          "div"
-        );
-
-
-      grid.className =
-        "lodging-grid";
-
-
-      group.items.forEach(
-        item => {
-
-
-          const card =
-            document.createElement(
-              "article"
-            );
-
-
-          card.className =
-            "lodging-card";
-
-
-          let metadata = "";
-
-
-          if (item.people) {
-
-            metadata +=
-              `<span>♡ ${item.people}</span>`;
-
-          }
-
-
-          if (item.drive) {
-
-            metadata +=
-              `<span>→ ${item.drive} en voiture</span>`;
-
-          }
-
-
-          if (item.distance) {
-
-            metadata +=
-              `<span>${item.distance}</span>`;
-
-          }
-
-
-          if (item.price) {
-
-            metadata +=
-              `<span>${item.price}</span>`;
-
-          }
-
+          const meta = [];
+          if (item.people) meta.push(`<span>♡ ${item.people}</span>`);
+          if (item.drive) meta.push(`<span>→ ${item.drive} en voiture</span>`);
+          if (item.distance) meta.push(`<span>${item.distance}</span>`);
+          if (item.price) meta.push(`<span>${item.price}</span>`);
 
           card.innerHTML = `
-
-            <h4>
-              ${item.name}
-            </h4>
-
-
-            <div class="lodging-meta">
-
-              ${metadata}
-
-            </div>
-
-
-            ${
-              item.details
-              ?
-              `
-              <div class="lodging-details">
-                ${item.details}
-              </div>
-              `
-              :
-              ""
-            }
-
-
-            ${
-              item.url
-              ?
-              `
-              <a
-                class="lodging-link"
-                href="${item.url}"
-                target="_blank"
-                rel="noopener"
-              >
-                VOIR L'HÉBERGEMENT →
-              </a>
-              `
-              :
-              ""
-            }
-
+            <h4>${item.name}</h4>
+            <div class="lodging-meta">${meta.join("")}</div>
+            ${item.details ? `<div class="lodging-details">${item.details}</div>` : ""}
+            ${item.url ? `<a class="lodging-link" href="${item.url}" target="_blank" rel="noopener">VOIR L'HÉBERGEMENT →</a>` : ""}
           `;
 
-
-          grid.appendChild(
-            card
-          );
-
-
-        }
-      );
-
-
-      groupBlock.appendChild(
-        grid
-      );
-
-
-      container.appendChild(
-        groupBlock
-      );
-
-
-    }
-  );
-
-
-}
-
-
-renderLodgings();
-
-
-
-/* =========================
-   RSVP
-========================= */
-
-
-/*
-À L'ÉTAPE SUIVANTE,
-on remplacera cette valeur
-par ton URL Google Apps Script.
-*/
-
-
-const RSVP_ENDPOINT =
-  "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
-
-
-
-const form =
-  document.getElementById(
-    "rsvpForm"
-  );
-
-
-const guestList =
-  document.getElementById(
-    "guestsList"
-  );
-
-
-const addGuestButton =
-  document.getElementById(
-    "addGuest"
-  );
-
-
-const attendanceDetails =
-  document.getElementById(
-    "attendanceDetails"
-  );
-
-
-const formStatus =
-  document.getElementById(
-    "formStatus"
-  );
-
-
-
-function addGuestField() {
-
-
-  const row =
-    document.createElement(
-      "div"
-    );
-
-
-  row.className =
-    "guest-row";
-
-
-  row.innerHTML = `
-
-    <input
-      type="text"
-      class="guest-name"
-      placeholder="Prénom Nom"
-    >
-
-    <button
-      type="button"
-      class="remove-guest"
-      aria-label="Supprimer cette personne"
-    >
-      ×
-    </button>
-
-  `;
-
-
-  row
-    .querySelector(
-      ".remove-guest"
-    )
-    .addEventListener(
-      "click",
-      () => row.remove()
-    );
-
-
-  guestList.appendChild(
-    row
-  );
-
-
-}
-
-
-
-addGuestButton.addEventListener(
-  "click",
-  addGuestField
-);
-
-
-
-document
-  .querySelectorAll(
-    'input[name="attendance"]'
-  )
-  .forEach(
-    input => {
-
-
-      input.addEventListener(
-        "change",
-        () => {
-
-
-          attendanceDetails.style.display =
-            input.value === "oui"
-            ?
-            "block"
-            :
-            "none";
-
-
-        }
-      );
-
-
-    }
-  );
-
-
-
-form.addEventListener(
-  "submit",
-  async event => {
-
-
-    event.preventDefault();
-
-
-    const respondent =
-      document
-        .getElementById(
-          "respondent"
-        )
-        .value
-        .trim();
-
-
-    const attendanceInput =
-      document.querySelector(
-        'input[name="attendance"]:checked'
-      );
-
-
-    if (!attendanceInput) {
-      return;
+          grid.appendChild(card);
+        });
+
+        groupBlock.appendChild(grid);
+        container.appendChild(groupBlock);
+      });
     }
 
+    renderLodgings();
 
-    const attendance =
-      attendanceInput.value;
+    /* Replace this with the Google Apps Script URL when we connect the RSVP sheet. */
+    const RSVP_ENDPOINT = "PASTE_GOOGLE_APPS_SCRIPT_URL_HERE";
 
+    const form = document.getElementById("rsvpForm");
+    const guestList = document.getElementById("guestsList");
+    const addGuestButton = document.getElementById("addGuest");
+    const attendanceDetails = document.getElementById("attendanceDetails");
+    const formStatus = document.getElementById("formStatus");
+    const brunchInputs = [...document.querySelectorAll('input[name="brunch"]')];
 
-    const additionalGuests =
-      [
-        ...document.querySelectorAll(
-          ".guest-name"
-        )
-      ]
-      .map(
-        input =>
-          input.value.trim()
-      )
-      .filter(Boolean);
+    function addGuestField() {
+      const row = document.createElement("div");
+      row.className = "guest-row";
+      row.innerHTML = `
+        <input type="text" class="guest-name" placeholder="Prénom Nom">
+        <button type="button" class="remove-guest" aria-label="Supprimer cette personne">×</button>
+      `;
+      row.querySelector(".remove-guest").addEventListener("click", () => row.remove());
+      guestList.appendChild(row);
+    }
 
+    addGuestButton.addEventListener("click", addGuestField);
 
-    const attendees =
-      attendance === "oui"
-      ?
-      [
+    function updateAttendanceUI(value) {
+      const coming = value === "oui";
+      attendanceDetails.hidden = !coming;
+      brunchInputs.forEach(input => { input.required = coming; });
+      if (!coming) {
+        brunchInputs.forEach(input => { input.checked = false; });
+        guestList.innerHTML = "";
+      }
+    }
+
+    document.querySelectorAll('input[name="attendance"]').forEach(input => {
+      input.addEventListener("change", () => updateAttendanceUI(input.value));
+    });
+
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const respondent = document.getElementById("respondent").value.trim();
+      const attendanceInput = document.querySelector('input[name="attendance"]:checked');
+      if (!attendanceInput) return;
+
+      const attendance = attendanceInput.value;
+      const additionalGuests = [...document.querySelectorAll(".guest-name")]
+        .map(input => input.value.trim())
+        .filter(Boolean);
+
+      const attendees = attendance === "oui" ? [respondent, ...additionalGuests] : [];
+      const brunchInput = document.querySelector('input[name="brunch"]:checked');
+
+      const payload = {
         respondent,
-        ...additionalGuests
-      ]
-      :
-      [];
-
-
-    const brunchInput =
-      document.querySelector(
-        'input[name="brunch"]:checked'
-      );
-
-
-    const payload = {
-
-
-      respondent:
-        respondent,
-
-
-      attendance:
         attendance,
-
-
-      attendees:
         attendees,
+        attendeeCount: attendees.length,
+        brunch: brunchInput ? brunchInput.value : "",
+        message: document.getElementById("message").value.trim(),
+        song: document.getElementById("song").value.trim(),
+        submittedAt: new Date().toISOString()
+      };
 
+      if (RSVP_ENDPOINT.includes("PASTE_GOOGLE")) {
+        formStatus.textContent = "♡ Le formulaire est prêt. Il reste à le connecter au tableau des réponses.";
+        return;
+      }
 
-      attendeeCount:
-        attendees.length,
+      formStatus.textContent = "Envoi en cours…";
 
+      try {
+        await fetch(RSVP_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
 
-      brunch:
-        brunchInput
-        ?
-        brunchInput.value
-        :
-        "",
-
-
-      message:
-        document
-          .getElementById(
-            "message"
-          )
-          .value
-          .trim(),
-
-
-      song:
-        document
-          .getElementById(
-            "song"
-          )
-          .value
-          .trim(),
-
-
-      submittedAt:
-        new Date()
-          .toISOString()
-
-
-    };
-
-
-
-    if (
-      RSVP_ENDPOINT.includes(
-        "PASTE_GOOGLE"
-      )
-    ) {
-
-
-      formStatus.innerHTML =
-        "♡ Le formulaire est prêt. Il reste simplement à le connecter au tableau des réponses.";
-
-
-      return;
-
-
-    }
-
-
-
-    formStatus.textContent =
-      "Envoi en cours…";
-
-
-
-    try {
-
-
-      await fetch(
-        RSVP_ENDPOINT,
-        {
-
-          method:
-            "POST",
-
-          mode:
-            "no-cors",
-
-          headers: {
-
-            "Content-Type":
-              "text/plain;charset=utf-8"
-
-          },
-
-          body:
-            JSON.stringify(
-              payload
-            )
-
-        }
-      );
-
-
-      formStatus.innerHTML =
-        "C'est noté ♡ Rendez-vous le 5 juin !";
-
-
-      form.reset();
-
-
-      guestList.innerHTML =
-        "";
-
-
-      attendanceDetails.style.display =
-        "block";
-
-
-    }
-
-
-    catch (error) {
-
-
-      formStatus.textContent =
-        "Petit souci lors de l'envoi. Réessaie dans quelques instants.";
-
-
-    }
-
-
-  }
-);
-
-
-</script>
-
-
+        formStatus.textContent = "C'est noté ♡ Rendez-vous le 5 juin !";
+        form.reset();
+        guestList.innerHTML = "";
+        attendanceDetails.hidden = true;
+        brunchInputs.forEach(input => { input.required = false; });
+      } catch (error) {
+        formStatus.textContent = "Petit souci lors de l'envoi. Réessaie dans quelques instants.";
+      }
+    });
+  </script>
 </body>
-
 </html>
