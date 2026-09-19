@@ -5,7 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Pauline & Thibault — 5 juin 2027</title>
+.photo-totem {
+  position: relative;
+  width: 310px;
+  height: 650px;
+  margin: 20px auto 10px;
+}
 
+.photo-totem .photo {
+  position: absolute;
+  width: 245px;
+  display: block;
+  box-shadow: 0 3px 10px rgba(0,0,0,.08);
+}
+
+.photo1 {
+  top: 0;
+  left: 15px;
+  transform: rotate(-2deg);
+  z-index: 1;
+}
+
+.photo2 {
+  top: 195px;
+  right: 0;
+  transform: rotate(1.5deg);
+  z-index: 2;
+}
+
+.photo3 {
+  top: 390px;
+  left: 20px;
+  transform: rotate(-1deg);
+  z-index: 3;
+}
+
+@media (max-width: 650px) {
+  .photo-totem {
+    width: 270px;
+    height: 570px;
+  }
+
+  .photo-totem .photo {
+    width: 215px;
+  }
+
+  .photo2 {
+    top: 170px;
+  }
+
+  .photo3 {
+    top: 340px;
+  }
+}
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Caveat:wght@400;600;700&display=swap');
 
@@ -252,7 +304,11 @@
     depuis toujours ♡
   </div>
 
-  <!-- ON METTRA VOS PHOTOS ICI -->
+  <div class="photo-totem">
+  <img src="Photo-1.jpg" class="photo photo1" alt="Pauline et Thibault">
+  <img src="Photo-2.jpg" class="photo photo2" alt="Pauline et Thibault">
+  <img src="Photo-3.jpg" class="photo photo3" alt="Pauline et Thibault">
+</div>
 
   <div class="heart">♡</div>
 
