@@ -611,7 +611,6 @@
 
   <section id="venir">
     <div class="section-heading">
-      <img src="val-gaudry-icone.png" class="doodle-icon" alt="">
       <h2>VENIR</h2>
     </div>
 
@@ -678,7 +677,7 @@
 
     <div class="info-list">
       <div class="info-item">
-        <img src="details.png" alt="">
+        <img src="dress-code.png" alt="">
         <div>
           <h3>DRESS CODE</h3>
           <p>Venez beaux, venez vous-mêmes. Et surtout : prêts à danser.</p>
@@ -688,13 +687,13 @@
       <div class="info-item">
         <img src="no-kids.png" alt="">
         <div>
-          <h3>LES PETITS HUMAINS</h3>
+          <h3>NO KIDS</h3>
           <p>On les adore, mais cette fois-ci, on vous veut rien que pour nous. <strong>Soirée réservée aux grands ♡</strong></p>
         </div>
       </div>
 
       <div class="info-item">
-        <img src="voiture.png" alt="">
+        <img src="parking.png" alt="">
         <div>
           <h3>PARKING</h3>
           <p>Vous pourrez vous garer directement sur place.</p>
@@ -718,7 +717,7 @@
       </div>
 
       <div class="form-group">
-        <span class="form-title">Serez-vous parmi nous le 5 juin ?</span>
+        <span class="form-title">Serez-vous parmi nous le samedi 5 juin ?</span>
         <div class="choices">
           <label class="choice">
             <input type="radio" name="attendance" value="oui" required>
@@ -733,14 +732,14 @@
 
       <div id="attendanceDetails" hidden>
         <div class="form-group">
-          <span class="form-title">Qui sera présent avec vous ?</span>
-          <p class="small-note">Ajoutez le prénom et le nom de chaque personne présente.</p>
+          <span class="form-title">Qui sera présent avec vous le samedi ?</span>
+          <p class="small-note">Vous êtes déjà compté(e). Ajoutez le prénom et le nom de chaque personne qui vous accompagnera.</p>
           <div id="guestsList"></div>
           <button type="button" class="add-guest" id="addGuest">+ AJOUTER UNE PERSONNE</button>
         </div>
 
         <div class="form-group">
-          <span class="form-title">Et pour le brunch du dimanche ?</span>
+          <span class="form-title">Et pour le brunch du dimanche 6 juin ?</span>
           <div class="choices">
             <label class="choice">
               <input type="radio" name="brunch" value="oui">
@@ -751,6 +750,13 @@
               Non, on reprendra la route
             </label>
           </div>
+        </div>
+
+        <div class="form-group" id="brunchDetails" hidden>
+          <span class="form-title">Qui sera présent au brunch ?</span>
+          <p class="small-note">Ajoutez précisément les personnes qui seront là le dimanche.</p>
+          <div id="brunchGuestsList"></div>
+          <button type="button" class="add-guest" id="addBrunchGuest">+ AJOUTER UNE PERSONNE</button>
         </div>
       </div>
 
@@ -1676,17 +1682,23 @@
 
     renderLodgings();
 
-    /* Replace this with the Google Apps Script URL when we connect the RSVP sheet. */
-    const RSVP_ENDPOINT = https://script.google.com/macros/s/AKfycbyYzN2nkouUhmB-wJ6Lm60QdoqOQInC64O4lbyhO9XANV48taxX2r9Nd4QHvI-6hyot/exec;
+    /* =========================
+       RSVP
+    ========================= */
+
+    const RSVP_ENDPOINT =
+      "https://script.google.com/macros/s/AKfycbyYzN2nkouUhmB-wJ6Lm60QdoqOQInC64O4lbyhO9XANV48taxX2r9Nd4QHvI-6hyot/exec";
 
     const form = document.getElementById("rsvpForm");
     const guestList = document.getElementById("guestsList");
+    const brunchGuestList = document.getElementById("brunchGuestsList");
     const addGuestButton = document.getElementById("addGuest");
+    const addBrunchGuestButton = document.getElementById("addBrunchGuest");
     const attendanceDetails = document.getElementById("attendanceDetails");
+    const brunchDetails = document.getElementById("brunchDetails");
     const formStatus = document.getElementById("formStatus");
-    const brunchInputs = [...document.querySelectorAll('input[name="brunch"]')];
 
-    function addGuestField() {
+    function createGuestField(container) {
       const row = document.createElement("div");
       row.className = "guest-row";
       row.innerHTML = `
@@ -1694,23 +1706,44 @@
         <button type="button" class="remove-guest" aria-label="Supprimer cette personne">×</button>
       `;
       row.querySelector(".remove-guest").addEventListener("click", () => row.remove());
-      guestList.appendChild(row);
+      container.appendChild(row);
     }
 
-    addGuestButton.addEventListener("click", addGuestField);
+    addGuestButton.addEventListener("click", () => createGuestField(guestList));
+    addBrunchGuestButton.addEventListener("click", () => createGuestField(brunchGuestList));
 
-    function updateAttendanceUI(value) {
-      const coming = value === "oui";
-      attendanceDetails.hidden = !coming;
-      brunchInputs.forEach(input => { input.required = coming; });
-      if (!coming) {
-        brunchInputs.forEach(input => { input.checked = false; });
-        guestList.innerHTML = "";
-      }
-    }
+    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        const selected = document.querySelector('input[name="attendance"]:checked');
+        const coming = selected && selected.value === "oui";
+        attendanceDetails.hidden = !coming;
 
-    document.querySelectorAll('input[name="attendance"]').forEach(input => {
-      input.addEventListener("change", () => updateAttendanceUI(input.value));
+        if (!coming) {
+          guestList.innerHTML = "";
+          brunchGuestList.innerHTML = "";
+          brunchDetails.hidden = true;
+          document.querySelectorAll('input[name="brunch"]').forEach(item => {
+            item.checked = false;
+            item.required = false;
+          });
+        } else {
+          document.querySelectorAll('input[name="brunch"]').forEach(item => {
+            item.required = true;
+          });
+        }
+      });
+    });
+
+    document.querySelectorAll('input[name="brunch"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        const selected = document.querySelector('input[name="brunch"]:checked');
+        const comingToBrunch = selected && selected.value === "oui";
+        brunchDetails.hidden = !comingToBrunch;
+
+        if (!comingToBrunch) {
+          brunchGuestList.innerHTML = "";
+        }
+      });
     });
 
     form.addEventListener("submit", async event => {
@@ -1721,28 +1754,37 @@
       if (!attendanceInput) return;
 
       const attendance = attendanceInput.value;
-      const additionalGuests = [...document.querySelectorAll(".guest-name")]
+      const additionalGuests = [...guestList.querySelectorAll(".guest-name")]
         .map(input => input.value.trim())
         .filter(Boolean);
 
-      const attendees = attendance === "oui" ? [respondent, ...additionalGuests] : [];
+      const attendees = attendance === "oui"
+        ? [respondent, ...additionalGuests]
+        : [];
+
       const brunchInput = document.querySelector('input[name="brunch"]:checked');
+      const brunch = brunchInput ? brunchInput.value : "";
+
+      const brunchAdditionalGuests = [...brunchGuestList.querySelectorAll(".guest-name")]
+        .map(input => input.value.trim())
+        .filter(Boolean);
+
+      const brunchAttendees = brunch === "oui"
+        ? [respondent, ...brunchAdditionalGuests]
+        : [];
 
       const payload = {
         respondent,
         attendance,
         attendees,
         attendeeCount: attendees.length,
-        brunch: brunchInput ? brunchInput.value : "",
+        brunch,
+        brunchAttendees,
+        brunchAttendeeCount: brunchAttendees.length,
         message: document.getElementById("message").value.trim(),
         song: document.getElementById("song").value.trim(),
         submittedAt: new Date().toISOString()
       };
-
-      if (RSVP_ENDPOINT.includes("PASTE_GOOGLE")) {
-        formStatus.textContent = "♡ Le formulaire est prêt. Il reste à le connecter au tableau des réponses.";
-        return;
-      }
 
       formStatus.textContent = "Envoi en cours…";
 
@@ -1757,8 +1799,12 @@
         formStatus.textContent = "C'est noté ♡ Rendez-vous le 5 juin !";
         form.reset();
         guestList.innerHTML = "";
+        brunchGuestList.innerHTML = "";
         attendanceDetails.hidden = true;
-        brunchInputs.forEach(input => { input.required = false; });
+        brunchDetails.hidden = true;
+        document.querySelectorAll('input[name="brunch"]').forEach(item => {
+          item.required = false;
+        });
       } catch (error) {
         formStatus.textContent = "Petit souci lors de l'envoi. Réessaie dans quelques instants.";
       }
