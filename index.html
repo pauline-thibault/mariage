@@ -543,21 +543,62 @@
 
       .rsvp-form { padding: 22px; }
     }
-  </style>
+  
+    /* Navigation et améliorations communes — V2 */
+    nav { gap: 12px 28px; align-items:center; }
+    nav a { min-height:44px; display:inline-flex; align-items:center; }
+    nav a[aria-current="page"] { text-decoration:underline; text-underline-offset:6px; }
+    nav .nav-rsvp, .primary-link { background:var(--blue); color:var(--cream); border-radius:999px; padding:10px 22px; text-decoration:none; }
+    .primary-link { display:inline-block; font-size:24px; margin-top:12px; }
+    .quick-links { display:flex; flex-wrap:wrap; justify-content:center; gap:8px 22px; margin-top:28px; }
+    .quick-links a { font-size:20px; padding:10px 0; text-underline-offset:5px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline:3px solid var(--blue); outline-offset:5px; }
+    button:disabled { opacity:.6; cursor:wait; }
+    .sleep-teaser { text-align:center; border-top:2px solid var(--line); border-bottom:2px solid var(--line); }
+    .sleep-teaser p { max-width:640px; margin:24px auto 12px; }
+    .lodging-page { padding-top:42px; }
+    .lodging-page h1 { font-size:clamp(54px,9vw,94px); line-height:1; margin:28px 0 20px; }
+    .back-link { display:inline-block; font-size:20px; padding:10px 0; }
+    .filters { display:flex; flex-wrap:wrap; gap:10px; margin:26px 0 14px; }
+    .filter-button { font:inherit; font-size:19px; border:2px solid var(--blue); color:var(--blue); background:transparent; padding:9px 16px; border-radius:999px; min-height:44px; cursor:pointer; }
+    .filter-button[aria-pressed="true"] { color:var(--cream); background:var(--blue); }
+    .lodging-count { font-size:18px; margin:12px 0 24px; }
+    .lodging-card { display:flex; flex-direction:column; }
+    .lodging-card h3 { margin:0 0 12px; font-size:27px; line-height:1.1; }
+    .lodging-card .drive { font-size:20px; margin-bottom:12px; }
+    .lodging-card .lodging-link { align-self:flex-start; margin-top:auto; padding-top:18px; min-height:44px; }
+    .lodging-card details { margin:8px 0 14px; font-size:18px; }
+    .lodging-card summary { cursor:pointer; padding:6px 0; }
+    .lodging-card p { font-size:19px; margin:4px 0 12px; }
+    .lodging-card .lodging-meta { display:block; }
+    .lodging-meta span { display:block; margin-bottom:7px; }
+    .programme-list { margin:0 auto; }
+    .programme-row img { flex-shrink:0; }
+    @media (max-width:700px) {
+      nav { padding:8px 10px; gap:8px 14px; flex-wrap:nowrap; }
+      nav a { font-size:16px; letter-spacing:0; white-space:nowrap; }
+      nav .nav-rsvp { padding:8px 13px; }
+      .section-heading { flex-wrap:wrap; }
+      section { scroll-margin-top:82px; }
+      .lodging-page { padding-top:24px; }
+      .lodging-grid { gap:14px; }
+      .lodging-card { padding:20px; }
+      .programme-label { overflow-wrap:anywhere; }
+      .lodging-group-title { font-size:30px; }
+    }
+    @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
 </head>
 <body>
 
-  <nav>
-    <a href="#programme">PROGRAMME</a>
-    <a href="#venir">VENIR</a>
-    <a href="#dormir">DORMIR</a>
-    <a href="#lendemain">LE LENDEMAIN</a>
-    <a href="#infos">INFOS</a>
-    <a href="#rsvp">RSVP ♡</a>
-  </nav>
+  <nav aria-label="Navigation principale">
+      <a href="index.html" aria-current="page">Le mariage</a>
+      <a href="hebergements.html" >Où dormir ?</a>
+      <a class="nav-rsvp" href="#rsvp">Répondre ♡</a>
+    </nav>
 
   <header class="hero">
-    <h1>PAULINE<br>&amp; THIBAULT</h1>
+    <h1 id="accueil">PAULINE<br>&amp; THIBAULT</h1>
 
     <div class="photo-totem" aria-label="Photos de Pauline et Thibault">
       <img src="Photo-1.jpg" class="photo1" alt="Pauline et Thibault">
@@ -568,6 +609,11 @@
     <div class="hero-main-date">5 JUIN 2027</div>
     <div class="hero-place">MONTGAUDRY 61360</div>
 
+    <a class="primary-link" href="#rsvp">Je confirme ma présence ♡</a>
+    <div class="quick-links" aria-label="Raccourcis">
+      <a href="#programme">Le programme</a><a href="#venir">Venir</a>
+      <a href="#lendemain">Le brunch</a><a href="#infos">Les infos utiles</a>
+    </div>
     <div class="countdown" aria-label="Compte à rebours avant le mariage">
       <div><strong id="days">---</strong><span>JOURS</span></div>
       <div><strong id="hours">--</strong><span>HEURES</span></div>
@@ -576,19 +622,19 @@
     </div>
   </header>
 
+  <main>
   <section id="programme">
     <div class="section-heading">
       <img src="disco.png" class="doodle-icon" alt="">
       <h2>LE PROGRAMME</h2>
     </div>
 
-    <div class="program-item">
-  <img src="Accueil.png" class="program-icon" alt="">
-  <div>
-    <h3>16H00 ACCUEIL</h3>
-  </div>
-    
     <div class="programme-list">
+      <div class="programme-row">
+        <img src="Accueil.png" alt="" width="80" height="80">
+        <span class="programme-time">16H00</span>
+        <span class="programme-label">ACCUEIL</span>
+      </div>
       <div class="programme-row">
         <img src="ceremonie.png" alt="">
         <span class="programme-time">16H30</span>
@@ -649,18 +695,13 @@
     </div>
   </section>
 
-  <section id="dormir">
-    <div class="section-heading">
-      <img src="dormir.png" class="doodle-icon" alt="">
-      <h2>DORMIR</h2>
+  <section id="dormir" class="sleep-teaser">
+    <div class="section-heading centered">
+      <img src="dormir.png" class="doodle-icon" alt="" loading="lazy">
+      <h2>OÙ DORMIR ?</h2>
     </div>
-
-    <div class="sleep-intro">
-      <p>Quelques adresses autour du Val Gaudry pour poser vos valises après la fête.</p>
-      <p class="small-note">Prix et informations indiqués à titre indicatif d'après la liste d'hébergements du domaine. Pensez à vérifier disponibilités et tarifs directement auprès de chaque hébergement.</p>
-    </div>
-
-    <div id="lodgings"></div>
+    <p>À deux ou à plusieurs, trouvez votre petit coin pour prolonger le week-end dans le Perche.</p>
+    <a class="primary-link" href="hebergements.html">Découvrir les hébergements →</a>
   </section>
 
   <section id="lendemain">
@@ -686,7 +727,7 @@
         <img src="dress-code.png" alt="">
         <div>
           <h3>DRESS CODE</h3>
-          <p>Venez beaux, venez comme vous êtes. Et surtout, avc votre meilleure humeur.</p>
+          <p>Venez beaux, venez comme vous êtes. Et surtout, avec votre meilleure humeur.</p>
         </div>
       </div>
 
@@ -777,14 +818,15 @@
       </div>
 
       <button type="submit" class="submit-button">ENVOYER ♡</button>
-      <div id="formStatus" class="form-status"></div>
+      <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
     </form>
   </section>
 
+  </main>
   <footer>Pauline &amp; Thibault · 05.06.2027 ♡</footer>
 
   <script>
-    const weddingDate = new Date("2027-06-05T16:00:00");
+    const weddingDate = new Date("2027-06-05T16:00:00+02:00");
 
     function updateCountdown() {
       const now = new Date();
@@ -811,882 +853,6 @@
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
-
-    const lodgingGroups = [
-
-
-  {
-
-    title: "CHAMBRES D'HÔTES",
-
-    items: [
-
-
-      {
-
-        name:
-          "Les Jardins de Pascal",
-
-        people:
-          "jusqu'à 5 personnes",
-
-        drive:
-          "7 min",
-
-        distance:
-          "5 km",
-
-        price:
-          "à partir de 85 € / nuit",
-
-        url:
-          "https://www.jardindepascal61.com/"
-
-      },
-
-
-      {
-
-        name:
-          "Maison d'Horbé",
-
-        people:
-          "3 chambres",
-
-        drive:
-          "9 min",
-
-        distance:
-          "7 km",
-
-        price:
-          "à partir de 140 € / nuit",
-
-        details:
-          "Chambres d'environ 30 m² · petit-déjeuner inclus.",
-
-        url:
-          "https://lamaisondhorbe.com/"
-
-      },
-
-
-      {
-
-        name:
-          "Chambre d'hôte chez Artiste Verrier",
-
-        people:
-          "jusqu'à 3 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "7,2 km",
-
-        price:
-          "à partir de 250 € pour 2 nuits",
-
-        details:
-          "Lieu-dit La Petite Grange, La Perrière.",
-
-        url:
-          "https://la-petite-grange-bed-and-breakfast.business.site/"
-
-      }
-
-
-    ]
-
-  },
-
-
-
-  {
-
-    title: "GÎTES & MAISONS",
-
-    items: [
-
-
-      {
-
-        name:
-          "Domaine du Ch'val Perché",
-
-        people:
-          "7 personnes",
-
-        drive:
-          "4 min",
-
-        distance:
-          "2,4 km",
-
-        price:
-          "à partir de 85 € / nuit",
-
-        details:
-          "3 chambres · 1 salle de bain.",
-
-        url:
-          "https://domaine-du-chval-perche.business.site/"
-
-      },
-
-
-      {
-
-        name:
-          "Le Clos de la Fuie",
-
-        people:
-          "6 personnes",
-
-        drive:
-          "7 à 9 min",
-
-        distance:
-          "7 km",
-
-        price:
-          "200 à 230 € / nuit",
-
-        details:
-          "La liste du domaine mentionne cet hébergement deux fois, avec des tarifs légèrement différents. 3 chambres · 1 salle d'eau.",
-
-        url:
-          "https://leclosdelafuie.fr/"
-
-      },
-
-
-      {
-
-        name:
-          "Gîte les Marais",
-
-        people:
-          "9 personnes",
-
-        drive:
-          "7 min",
-
-        distance:
-          "4 km",
-
-        price:
-          "à partir de 240 € / nuit",
-
-        details:
-          "5 chambres · 2 salles d'eau.",
-
-        url:
-          "https://www.gites-de-france-orne.com/Gite-rural/Chardon-Bernard-a-Sure-dans-Le-Perche-G510.html"
-
-      },
-
-
-      {
-
-        name:
-          "Le Perche en Vert",
-
-        people:
-          "6 personnes",
-
-        drive:
-          "7 min",
-
-        distance:
-          "6 km",
-
-        price:
-          "à partir de 150 € / nuit",
-
-        details:
-          "3 nuits minimum · 3 chambres · 2 salles de bain · animaux acceptés.",
-
-        url:
-          "https://www.booking.com/Share-Fau6i5"
-
-      },
-
-
-      {
-
-        name:
-          "Le Vieux Chêne",
-
-        people:
-          "6 personnes",
-
-        drive:
-          "8 min",
-
-        distance:
-          "6,3 km",
-
-        price:
-          "à partir de 350 € / week-end",
-
-        details:
-          "3 chambres · 1 salle d'eau.",
-
-        url:
-          "https://www.parc-naturel-perche.fr/ou-dormir-0/hebergements-recommandes-par-le-parc/gite-le-vieux-chene-2676544"
-
-      },
-
-
-      {
-
-        name:
-          "Le Mimi Gîte",
-
-        people:
-          "2 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "7,2 km",
-
-        price:
-          "à partir de 45 € / nuit",
-
-        details:
-          "Maison de ville · 1 chambre · 1 salle de bain.",
-
-        url:
-          "https://www.gites-de-france.com/fr/pays-de-la-loire/sarthe/le-mimi-gite-h72g012715"
-
-      },
-
-
-      {
-
-        name:
-          "Le Presbytère, l'Éperon",
-
-        people:
-          "8 personnes",
-
-        drive:
-          "11 min",
-
-        distance:
-          "7,4 km",
-
-        price:
-          "à partir de 350 € / nuit",
-
-        details:
-          "3 chambres · 1 salle d'eau · 1 salle de bain.",
-
-        url:
-          "https://www.gites-de-france-orne.com/Gite-rural/Belforet-En-Perche-.-a-Belforet-en-perche-dans-Le-Perche-G464.html"
-
-      },
-
-
-      {
-
-        name:
-          "La Grande Suardière",
-
-        people:
-          "8 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "7,7 km",
-
-        price:
-          "à partir de 400 € / nuit",
-
-        url:
-          "https://www.lagrandesuardiere.com/"
-
-      },
-
-
-      {
-
-        name:
-          "La Chapelle",
-
-        people:
-          "2 personnes",
-
-        drive:
-          "11 min",
-
-        distance:
-          "8,2 km",
-
-        price:
-          "à partir de 90 € / nuit",
-
-        details:
-          "1 chambre · 1 salle de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/45438341"
-
-      },
-
-
-      {
-
-        name:
-          "Cottage, chez Laurent",
-
-        people:
-          "4 personnes",
-
-        drive:
-          "8 min",
-
-        distance:
-          "6 km",
-
-        price:
-          "à partir de 80 € / nuit",
-
-        details:
-          "2 chambres · 1 salle de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/33274082"
-
-      },
-
-
-      {
-
-        name:
-          "Maison de ville à Mamers — Chez Cindy",
-
-        people:
-          "8 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "8,3 km",
-
-        price:
-          "à partir de 78 € / nuit",
-
-        details:
-          "3 chambres · 6 lits · 1 salle de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/22443142"
-
-      },
-
-
-      {
-
-        name:
-          "Gîte à la ferme — Chez Ilaria",
-
-        people:
-          "2 personnes",
-
-        drive:
-          "11 min",
-
-        distance:
-          "8,5 km",
-
-        price:
-          "à partir de 69 € / nuit",
-
-        details:
-          "1 chambre · 1 salle de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/41664919"
-
-      },
-
-
-      {
-
-        name:
-          "Chez Hugue, la Persi !",
-
-        people:
-          "2 personnes",
-
-        drive:
-          "11 min",
-
-        distance:
-          "10 km",
-
-        price:
-          "à partir de 50 € / nuit",
-
-        details:
-          "1 chambre · 1 salle de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/51742066"
-
-      },
-
-
-      {
-
-        name:
-          "Horizon boisé",
-
-        people:
-          "7 personnes",
-
-        drive:
-          "11 min",
-
-        distance:
-          "10 km",
-
-        price:
-          "à partir de 50 € / nuit",
-
-        details:
-          "3 chambres · 3 salles de bain.",
-
-        url:
-          "https://www.sarthetourisme.com/hebergement-locatif/gite-horizon-boise/"
-
-      },
-
-
-      {
-
-        name:
-          "Gîte la Roiserie",
-
-        people:
-          "4 personnes",
-
-        drive:
-          "14 min",
-
-        distance:
-          "10 km",
-
-        price:
-          "à partir de 240 €",
-
-        details:
-          "2 chambres · 2 salles d'eau.",
-
-        url:
-          "https://www.gites-de-france-orne.com/Gite-rural/Briere-Joelle-Jean-luc-a-Belforet-en-perche-dans-Le-Perche-G572.html"
-
-      },
-
-
-      {
-
-        name:
-          "Jolie ferme rénovée",
-
-        people:
-          "8 personnes",
-
-        drive:
-          "12 min",
-
-        distance:
-          "",
-
-        price:
-          "",
-
-        details:
-          "Contact Olivier : 06 45 27 73 11.",
-
-        url:
-          "https://www.airbnb.fr/rooms/1283867033008918974"
-
-      },
-
-
-      {
-
-        name:
-          "Le Grand Gîte",
-
-        people:
-          "6 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "8 km",
-
-        price:
-          "à partir de 80 € / nuit",
-
-        details:
-          "3 chambres · 3 salles d'eau. Possibilité de grouper 3 gîtes pour une capacité totale de 13 personnes.",
-
-        url:
-          "https://www.gites-de-france.com/fr/pays-de-la-loire/sarthe/le-grand-gite-h72g012651"
-
-      },
-
-
-      {
-
-        name:
-          "La Maison de La Perrière",
-
-        people:
-          "4 personnes",
-
-        drive:
-          "10 min",
-
-        distance:
-          "7 km",
-
-        price:
-          "à partir de 80 € / nuit",
-
-        details:
-          "2 chambres · 4 lits simples · animaux acceptés.",
-
-        url:
-          "https://www.airbnb.fr/rooms/1039733541131413390"
-
-      },
-
-
-      {
-
-        name:
-          "La Maison Volganza",
-
-        people:
-          "2 gîtes · 5 ou 8 personnes",
-
-        drive:
-          "15 min",
-
-        distance:
-          "14 km",
-
-        price:
-          "à partir de 90 € / nuit",
-
-        details:
-          "La Petite Croix, Saint-Fulgent-des-Ormes.",
-
-        url:
-          "https://www.lamaisonvolganza.fr/"
-
-      }
-
-
-    ]
-
-  },
-
-
-
-  {
-
-    title:
-      "POUR LES PLUS NOMBREUX",
-
-    items: [
-
-
-      {
-
-        name:
-          "Gîte dans les écuries du Château",
-
-        people:
-          "14 personnes",
-
-        drive:
-          "9 min",
-
-        distance:
-          "7 km",
-
-        price:
-          "à partir de 280 € / nuit",
-
-        details:
-          "7 chambres · 4 salles de bain.",
-
-        url:
-          "https://www.airbnb.fr/rooms/38993139"
-
-      },
-
-
-      {
-
-        name:
-          "Gîte L'École",
-
-        people:
-          "10 personnes",
-
-        drive:
-          "13 min",
-
-        distance:
-          "9,2 km",
-
-        price:
-          "à partir de 500 €",
-
-        details:
-          "2 chambres · 1 dortoir · 2 salles d'eau.",
-
-        url:
-          "https://www.gites-de-france-orne.com/Gite-rural/Commune-De-Chemilli-.-a-Chemilli-dans-Le-Perche-G699.html"
-
-      },
-
-
-      {
-
-        name:
-          "Château de Bellavilliers — Les Chemins Verts",
-
-        people:
-          "14 personnes",
-
-        drive:
-          "15 min",
-
-        distance:
-          "12 km",
-
-        price:
-          "à partir de 995 €",
-
-        details:
-          "6 grandes chambres · 2 salles d'eau · 1 salle de bain.",
-
-        url:
-          "https://www.gites-de-france-orne.com/Gite-rural/Cotreuil-Valerie-Et-Denis-a-Bellavilliers-dans-Le-Perche-G736.html"
-
-      }
-
-
-    ]
-
-  },
-
-
-
-  {
-
-    title:
-      "CAMPING",
-
-    items: [
-
-
-      {
-
-        name:
-          "Camping des Portes du Perche",
-
-        people:
-          "bungalows et mobil-homes jusqu'à 6 personnes",
-
-        drive:
-          "9 min",
-
-        distance:
-          "6 km",
-
-        price:
-          "à partir de 55 € / nuit",
-
-        url:
-          "https://www.campingdesportesduperche.com/"
-
-      }
-
-
-    ]
-
-  },
-
-
-
-  {
-
-    title:
-      "UN PEU PLUS LOIN",
-
-    items: [
-
-
-      {
-
-        name:
-          "Les Nids Perchés",
-
-        people:
-          "appartements de 2 à 6 personnes",
-
-        drive:
-          "20 min",
-
-        distance:
-          "19 km",
-
-        price:
-          "à partir de 90 € / nuit",
-
-        details:
-          "Plusieurs annonces sur Booking selon la capacité souhaitée."
-
-      },
-
-
-      {
-
-        name:
-          "Hôtel-Restaurant Les Prés",
-
-        people:
-          "9 chambres et suites",
-
-        drive:
-          "27 min",
-
-        distance:
-          "27,4 km",
-
-        price:
-          "",
-
-        url:
-          "https://hotellespres.com/lespres/"
-
-      },
-
-
-      {
-
-        name:
-          "Gîtes-chalet",
-
-        people:
-          "jusqu'à 6 personnes",
-
-        drive:
-          "",
-
-        distance:
-          "15 km",
-
-        price:
-          "",
-
-        details:
-          "La Fresnay-sur-Chédouet · 06 30 64 42 54."
-
-      },
-
-
-      {
-
-        name:
-          "Les Peupliers du Perche",
-
-        people:
-          "jusqu'à 5 personnes",
-
-        drive:
-          "",
-
-        distance:
-          "17 km",
-
-        price:
-          "",
-
-        details:
-          "À Parfondeval.",
-
-        url:
-          "https://www.lespeupliersduperche.fr/"
-
-      }
-
-
-    ]
-
-  }
-
-
-];
-
-    function renderLodgings() {
-      const container = document.getElementById("lodgings");
-
-      lodgingGroups.forEach(group => {
-        const groupBlock = document.createElement("div");
-        groupBlock.className = "lodging-group";
-
-        const title = document.createElement("h3");
-        title.className = "lodging-group-title";
-        title.textContent = group.title;
-        groupBlock.appendChild(title);
-
-        const grid = document.createElement("div");
-        grid.className = "lodging-grid";
-
-        group.items.forEach(item => {
-          const card = document.createElement("article");
-          card.className = "lodging-card";
-
-          const meta = [];
-          if (item.people) meta.push(`<span>♡ ${item.people}</span>`);
-          if (item.drive) meta.push(`<span>→ ${item.drive} en voiture</span>`);
-          if (item.distance) meta.push(`<span>${item.distance}</span>`);
-          if (item.price) meta.push(`<span>${item.price}</span>`);
-
-          card.innerHTML = `
-            <h4>${item.name}</h4>
-            <div class="lodging-meta">${meta.join("")}</div>
-            ${item.details ? `<div class="lodging-details">${item.details}</div>` : ""}
-            ${item.url ? `<a class="lodging-link" href="${item.url}" target="_blank" rel="noopener">VOIR L'HÉBERGEMENT →</a>` : ""}
-          `;
-
-          grid.appendChild(card);
-        });
-
-        groupBlock.appendChild(grid);
-        container.appendChild(groupBlock);
-      });
-    }
-
-    renderLodgings();
 
     /* =========================
        RSVP
@@ -1754,6 +920,7 @@
 
     form.addEventListener("submit", async event => {
       event.preventDefault();
+      if (form.dataset.sending === "true") return;
 
       const respondent = document.getElementById("respondent").value.trim();
       const attendanceInput = document.querySelector('input[name="attendance"]:checked');
@@ -1792,6 +959,10 @@
         submittedAt: new Date().toISOString()
       };
 
+      form.dataset.sending = "true";
+      const submitButton = form.querySelector('button[type="submit"]');
+      submitButton.disabled = true;
+      form.setAttribute("aria-busy", "true");
       formStatus.textContent = "Envoi en cours…";
 
       try {
@@ -1802,7 +973,8 @@
           body: JSON.stringify(payload)
         });
 
-        formStatus.textContent = "C'est noté ♡ Rendez-vous le 5 juin !";
+        // Réponse opaque : l'endpoint existant ne permet pas de confirmer l'enregistrement.
+        formStatus.textContent = "Demande envoyée ♡ L’enregistrement ne peut pas être confirmé automatiquement. Contactez-nous pour vérifier sa réception.";
         form.reset();
         guestList.innerHTML = "";
         brunchGuestList.innerHTML = "";
@@ -1813,6 +985,10 @@
         });
       } catch (error) {
         formStatus.textContent = "Petit souci lors de l'envoi. Réessaie dans quelques instants.";
+      } finally {
+        form.dataset.sending = "false";
+        submitButton.disabled = false;
+        form.removeAttribute("aria-busy");
       }
     });
   </script>
