@@ -787,24 +787,19 @@
 
         <div class="form-group">
           <span class="form-title">Et pour le brunch du dimanche 6 juin ?</span>
+          <p class="small-note">Votre réponse concerne toutes les personnes indiquées pour le samedi.</p>
           <div class="choices">
             <label class="choice">
               <input type="radio" name="brunch" value="oui">
-              Oui, on sera là
+              Oui
             </label>
             <label class="choice">
               <input type="radio" name="brunch" value="non">
-              Non, on reprendra la route
+              Non
             </label>
           </div>
         </div>
 
-        <div class="form-group" id="brunchDetails" hidden>
-          <span class="form-title">Qui sera présent au brunch ?</span>
-          <p class="small-note">Ajoutez précisément les personnes qui seront là le dimanche.</p>
-          <div id="brunchGuestsList"></div>
-          <button type="button" class="add-guest" id="addBrunchGuest">+ AJOUTER UNE PERSONNE</button>
-        </div>
       </div>
 
       <div class="form-group">
@@ -863,11 +858,8 @@
 
     const form = document.getElementById("rsvpForm");
     const guestList = document.getElementById("guestsList");
-    const brunchGuestList = document.getElementById("brunchGuestsList");
     const addGuestButton = document.getElementById("addGuest");
-    const addBrunchGuestButton = document.getElementById("addBrunchGuest");
     const attendanceDetails = document.getElementById("attendanceDetails");
-    const brunchDetails = document.getElementById("brunchDetails");
     const formStatus = document.getElementById("formStatus");
 
     function createGuestField(container) {
@@ -882,7 +874,6 @@
     }
 
     addGuestButton.addEventListener("click", () => createGuestField(guestList));
-    addBrunchGuestButton.addEventListener("click", () => createGuestField(brunchGuestList));
 
     document.querySelectorAll('input[name="attendance"]').forEach(radio => {
       radio.addEventListener("change", () => {
@@ -892,8 +883,6 @@
 
         if (!coming) {
           guestList.innerHTML = "";
-          brunchGuestList.innerHTML = "";
-          brunchDetails.hidden = true;
           document.querySelectorAll('input[name="brunch"]').forEach(item => {
             item.checked = false;
             item.required = false;
@@ -902,18 +891,6 @@
           document.querySelectorAll('input[name="brunch"]').forEach(item => {
             item.required = true;
           });
-        }
-      });
-    });
-
-    document.querySelectorAll('input[name="brunch"]').forEach(radio => {
-      radio.addEventListener("change", () => {
-        const selected = document.querySelector('input[name="brunch"]:checked');
-        const comingToBrunch = selected && selected.value === "oui";
-        brunchDetails.hidden = !comingToBrunch;
-
-        if (!comingToBrunch) {
-          brunchGuestList.innerHTML = "";
         }
       });
     });
@@ -938,13 +915,7 @@
       const brunchInput = document.querySelector('input[name="brunch"]:checked');
       const brunch = brunchInput ? brunchInput.value : "";
 
-      const brunchAdditionalGuests = [...brunchGuestList.querySelectorAll(".guest-name")]
-        .map(input => input.value.trim())
-        .filter(Boolean);
-
-      const brunchAttendees = brunch === "oui"
-        ? [respondent, ...brunchAdditionalGuests]
-        : [];
+      const brunchAttendees = brunch === "oui" ? [...attendees] : [];
 
       const payload = {
         respondent,
@@ -977,9 +948,7 @@
         formStatus.textContent = "Demande envoyée ♡ L’enregistrement ne peut pas être confirmé automatiquement. Contactez-nous pour vérifier sa réception.";
         form.reset();
         guestList.innerHTML = "";
-        brunchGuestList.innerHTML = "";
         attendanceDetails.hidden = true;
-        brunchDetails.hidden = true;
         document.querySelectorAll('input[name="brunch"]').forEach(item => {
           item.required = false;
         });
